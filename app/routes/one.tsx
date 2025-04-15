@@ -1,21 +1,19 @@
 import {memo} from 'react';
-import {Link, useParams} from 'react-router';
+import {useParams} from 'react-router';
+import ButtonLink from './ButtonLink';
+import Wrapper from './Wrapper';
 
-export default function Route() {
-  return <One />;
+export default function RouteWrapper() {
+  return <Content />;
 }
 
-const One = memo(() => {
+// Intentionally memo'd wrapper to avoid contending with default route updates
+const Content = memo(() => {
   const params = useParams();
-  console.log('ZZZZZZ - One.params', params);
   return (
-    <div className="flex flex-col items-center justify-center pt-16 pb-4">
-      <div>Page One</div>
-      <div>
-        <Link to="/" className="text-blue-500">
-          Home
-        </Link>
-      </div>
-    </div>
+    <Wrapper title="Page 1" params={params}>
+      <ButtonLink to="/">Home</ButtonLink>
+      <ButtonLink to="/one/two">Page 2</ButtonLink>
+    </Wrapper>
   );
 });

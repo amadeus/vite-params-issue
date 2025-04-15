@@ -11,7 +11,8 @@ export default function RouteWrapper() {
 const Content = memo(() => {
   const params = useParams();
   return (
-    <Wrapper title="Home Page" params={params}>
+    <Wrapper title="Page 2" params={params}>
+      <ButtonLink to="/">Home</ButtonLink>
       <ButtonLink to="/one">Page 1</ButtonLink>
     </Wrapper>
   );
